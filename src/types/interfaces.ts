@@ -14,3 +14,8 @@ export interface IProduct {
 export interface ErrorMessageProps {
     error: string
 }
+
+export interface ModalWindowProps {
+    children: React.ReactNode
+    title: string
+}

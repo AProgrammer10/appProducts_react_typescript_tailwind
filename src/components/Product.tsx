@@ -10,7 +10,7 @@ export function Product({product}: ProductProps) {
 
   const btnBgClassName = details ? 'bg-yellow-400' : 'bg-green-400'
 
-  const btnClassName = ['rounded px-5 py-2', btnBgClassName]
+  const btnClassName = ['rounded px-5 py-2 outline-0', btnBgClassName]
 
   return (
     <div className="border py-2 px-4 m-10 rounded flex flex-col items-center mb-2">
