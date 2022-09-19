@@ -1,5 +1,5 @@
 export interface IProduct {
-    id: number
+    id?: number
     title: string
     price: number
     description: string
@@ -9,13 +9,4 @@ export interface IProduct {
         rate: number
         count: number
     }
-}
-
-export interface ErrorMessageProps {
-    error: string
-}
-
-export interface ModalWindowProps {
-    children: React.ReactNode
-    title: string
 }

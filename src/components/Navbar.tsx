@@ -1,6 +1,10 @@
 import React from 'react'
 
-export const Navbar: React.FC = () => (
+interface NavbarProps {
+    onClick: () => void
+}
+
+export const Navbar: React.FC<NavbarProps> = ({onClick}) => (
     <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
             <svg className="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" >
@@ -14,9 +18,11 @@ export const Navbar: React.FC = () => (
         </div>
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
             <div className="text-sm lg:flex-grow">
-            
+                
             </div>
-            <div></div>
+            <button
+                onClick={onClick}
+                className="font-semibold outline-0 inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-red-500 hover:bg-white mt-4 lg:mt-0" >Create a new product</button>
         </div>
         </nav>
 )

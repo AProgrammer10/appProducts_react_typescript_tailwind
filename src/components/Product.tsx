@@ -14,12 +14,12 @@ export function Product({product}: ProductProps) {
 
   return (
     <div className="border py-2 px-4 m-10 rounded flex flex-col items-center mb-2">
-      <h2 className="fond-bold text-green-700">{product.title}$</h2>
+      <h2 className="fond-bold text-green-700">{product.title}</h2>
       <span className="fond-bold text-red-700 my-3">Price: {product.price} $ USA</span>
       
       <img src={product.image} className="w-1/6" alt={product.title}/>
      
-      <span className="fond-bold text-purple-700 my-3">Rate: {product.rating.rate}</span>
+      <span className="fond-bold text-purple-700 my-3">Rate: {product?.rating?.rate}</span>
      
       <button
         onClick={() => setDetails(prev => !prev)}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Navbar} from './components/Navbar'
 import {Product} from './components/Product'
 import {Loader} from './components/Loader'
@@ -6,20 +6,29 @@ import {useProducts} from './hooks/useProducts'
 import { ErrorMessage } from './components/ErrorMessage'
 import { ModalWindow } from './components/ModalWindow'
 import {CreateProduct} from './components/CreateProduct'
+import {IProduct} from './types/interfaces'
 
 function App(){
-  const {products, loading, error} = useProducts()
+  const {products, loading, error, addProduct} = useProducts()
+  const [modal, setModal] = useState(false)
+
+  const createHandler = (product: IProduct) => {
+    setModal(false)
+    addProduct(product)
+
+  }
 
   return (
-    <div className="container mx-auto max-w-2xl pt-5">
-      <Navbar />
+    <div className="container mx-auto max-w-2xl pt-5 items-center">
+      <Navbar onClick={() => setModal(true)}/>
+      {/*<button className="rounded mt-5 px-5 py-2 bg-green-400 text-red-900 outline-0" onClick={() => setModal(true)}>Create a new product</button>*/}
       {loading && <Loader />}
       {error && <ErrorMessage error={error} />}
       {products.map(product => <Product product={product} key={product.id} />)}
 
-      <ModalWindow title="Create new product">
-        <CreateProduct />
-      </ModalWindow>
+      {modal && <ModalWindow title="Create new product" onClose={() => setModal(false)}>
+        <CreateProduct onCreate={createHandler} />
+      </ModalWindow>}
     </div>
   )
 }
